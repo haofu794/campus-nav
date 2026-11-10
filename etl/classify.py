@@ -16,7 +16,8 @@ Version 2 decides in three tiers:
      "开发" ...). Only used when nothing above matched.
 
 So "AI Agent 产品经理" -> 产品 (role word beats topic word),
-   "AI 应用开发工程师" -> 算法/AI (no role word, topic word decides).
+   "AI 应用开发工程师" -> AI应用/Agent (application-role phrase),
+   "大模型训练实习生" -> 算法/AI (no role word, topic word decides).
 
 Team suffixes are cut first: in "算法工程师 - Seed 产品研发" the part after
 " - " is the team name, and its "产品" must not make this a product job.
@@ -36,16 +37,19 @@ STRONG = [
     # Not "金融" here: bank titles like "金融科技岗（应用开发）" are dev jobs.
     ("金融/财会", ["财务", "会计", "审计", "精算", "风控", "投资", "证券", "信贷", "柜员"]),
     ("硬件/嵌入式", ["硬件", "嵌入式", "芯片", "fpga", "电路", "射频", "集成电路"]),
-    # AI-application engineering roles. Checked last among strong words, so a
-    # business role still wins ("AI Agent 产品经理" -> 产品), but they beat the
-    # site category, which files many of them under plain "后端".
-    ("算法/AI", ["ai应用", "大模型应用", "llm应用", "agent应用", "agent开发", "智能体开发", "ai agent",
+    # AI-application engineering roles, their own direction (not 算法/AI):
+    # building with LLMs is a different job from training them, and the one I
+    # want. Checked last among strong words, so a business role still wins
+    # ("AI Agent 产品经理" -> 产品), but they beat the site category, which
+    # files many of them under plain "后端".
+    ("AI应用/Agent", ["ai应用", "大模型应用", "llm应用", "agent应用", "agent开发", "智能体开发", "ai agent",
                "agent工程", "ai工程师", "大模型工程师", "aigc应用"]),
 ]
 
 # The site's own category text -> direction. Checked in order.
 CATEGORY = [
-    ("算法/AI", ["算法", "机器学习", "多模态", "智能体", "大语言模型", "nlp", "搜索、推荐", "模型应用", "ai基础设施"]),
+    ("AI应用/Agent", ["模型应用", "ai应用", "智能体应用"]),
+    ("算法/AI", ["算法", "机器学习", "多模态", "智能体", "大语言模型", "nlp", "搜索、推荐", "ai基础设施"]),
     ("前端/客户端", ["前端", "客户端"]),
     ("测试", ["测试"]),
     ("数据", ["数据"]),

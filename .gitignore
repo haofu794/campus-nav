@@ -11,3 +11,9 @@ __pycache__/
 .DS_Store
 .venv/
 .env
+# my resume goes into the judge prompt, keep its outputs local
+data/llm_labels.json
+# temp files left by the VM file mount
+.fuse_hidden*
+# published to GitHub Pages by the workflow, not committed (20 MB a day)
+web/data.json

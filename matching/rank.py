@@ -23,8 +23,9 @@ If the embedding channel is unavailable, the remaining weights are rescaled to
 sum to 1, so scores stay on the same 0~100 scale.
 """
 from .bm25 import BM25, tokenize
+from .fit import avoid
 
-DEFAULT_WEIGHTS = {"bm25": 0.25, "emb": 0.25, "skill": 0.25, "direction": 0.15, "city": 0.10}
+DEFAULT_WEIGHTS = {"bm25": 0.25, "emb": 0.25, "skill": 0.25, "direction": 0.15, "city": 0.10, "avoid": 0.0}
 RECALL_K = 1000
 
 
@@ -43,6 +44,7 @@ def features(jobs, profile, prefs, emb=None):
     top = max(raw) if raw else 0
     want_dirs = set(prefs.get("directions", []))
     want_cities = set(prefs.get("cities", []))
+    avoid_cfg = prefs.get("avoid", {})
 
     bm25_recall = _top_ids(raw, RECALL_K)
     emb_recall = _top_ids(emb, RECALL_K) if emb else set()
@@ -55,11 +57,14 @@ def features(jobs, profile, prefs, emb=None):
         # single tag I happen to know does not get a perfect 1.0.
         skill = len(hit) / (len(js) + 1) if js else 0.0
         cities_hit = [c for c in j["cities"] if c in want_cities]
+        av, av_reason = avoid(j, avoid_cfg)
         f = {
             "bm25": b / top if top else 0.0,
             "skill": skill,
             "direction": 1.0 if j["direction"] in want_dirs else 0.0,
             "city": 1.0 if (cities_hit or not want_cities) else 0.0,
+            "avoid": av,
+            "_avoid_reason": av_reason,
             "_hit": hit,
             "_cities_hit": cities_hit,
             "_recall": (["bm25"] if i in bm25_recall else []) + (["emb"] if i in emb_recall else []),
@@ -74,8 +79,13 @@ def active_weights(prefs, have_emb):
     """Weights for the features we actually have, rescaled to sum to 1."""
     w = {**DEFAULT_WEIGHTS, **prefs.get("weights", {})}
     if not have_emb:
+        # Tuned weights may lean almost entirely on emb, so dropping it would
+        # leave only direction/city. Use a separate no-embedding set instead.
+        w = dict(prefs.get("weights_no_emb") or w)
         w.pop("emb", None)
-    total = sum(w.values())
+    # Scale by the positive weights only: `avoid` is negative (a penalty), and
+    # counting it would shrink the total and inflate everything else.
+    total = sum(v for v in w.values() if v > 0)
     return {k: v / total for k, v in w.items()}
 
 
@@ -85,7 +95,8 @@ def score(jobs, profile, prefs, emb=None):
     w = active_weights(prefs, emb is not None)
     feats = features(jobs, profile, prefs, emb)
     for j, f in zip(jobs, feats):
-        j["match"] = round(100 * sum(wt * f[k] for k, wt in w.items()), 1)
+        j["match"] = round(max(0.0, 100 * sum(wt * f[k] for k, wt in w.items())), 1)
+        j["avoid"] = f["avoid"]
         j["recall"] = f["_recall"]
         if emb is not None:
             j["emb"] = round(f["emb"], 3)
@@ -98,6 +109,8 @@ def score(jobs, profile, prefs, emb=None):
             reasons.append("方向: " + j["direction"])
         if f["_cities_hit"]:
             reasons.append("城市: " + "/".join(f["_cities_hit"][:3]))
+        if f["_avoid_reason"]:
+            reasons.append("⚠ " + f["_avoid_reason"])
         j["reasons"] = reasons
     return feats
 

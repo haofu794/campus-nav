@@ -1,6 +1,46 @@
 {
-  "directions": ["算法/AI", "后端/开发", "数据"],
-  "cities": ["北京", "上海", "深圳", "杭州", "广州"],
-  "weights": {"bm25": 0.25, "emb": 0.25, "skill": 0.25, "direction": 0.15, "city": 0.10},
-  "rec_top_n": 200
+  "directions": [
+    "AI应用/Agent",
+    "后端/开发",
+    "数据"
+  ],
+  "cities": [
+    "北京",
+    "上海",
+    "深圳",
+    "杭州",
+    "广州"
+  ],
+  "weights": {
+    "bm25": 0.0,
+    "emb": 0.75,
+    "skill": 0.0,
+    "direction": 0.15,
+    "city": 0.1,
+    "avoid": -0.1
+  },
+  "rec_top_n": 200,
+  "weights_no_emb": {
+    "bm25": 0.25,
+    "skill": 0.25,
+    "direction": 0.15,
+    "city": 0.1,
+    "avoid": -0.1
+  },
+  "weights_note": "bm25/emb/skill picked by 10x5-fold CV on my labels (python -m matching.evaluate tune); avoid is a penalty (<=0); weights_no_emb is used when embeddings are unavailable (--no-embed, browser re-score)",
+  "avoid": {
+    "directions": [
+      "运营/市场",
+      "产品",
+      "职能/管培",
+      "设计"
+    ],
+    "research": true,
+    "keywords": [
+      "风控",
+      "安全",
+      "审核",
+      "黑灰产"
+    ]
+  }
 }

@@ -76,25 +76,47 @@ function filtered() {
 }
 
 // ---------- rendering ----------
+// Company avatar: first character on a colour picked from the name, so the
+// same company always gets the same colour (no logo files to host).
+const AVATAR_COLORS = ["#00a870", "#3370ff", "#7b61ff", "#f5631e", "#e8488b", "#14a3b8", "#c7880a", "#5b6b7f"];
+function avatar(name) {
+  let h = 0;
+  for (const ch of name || "?") h = (h * 31 + ch.codePointAt(0)) >>> 0;
+  return `<div class="avatar" style="background:${AVATAR_COLORS[h % AVATAR_COLORS.length]}">${esc((name || "?").trim()[0])}</div>`;
+}
+function scoreClass(m) { return m >= 75 ? "" : m >= 50 ? "mid" : "low"; }
+
 function card(j, mySkills) {
   const p = progress[j.id] || {};
-  const isNew = daysAgo(j.first_seen) <= 7;
-  const opts = STATUSES.map((s) => `<option ${s === (p.status || "") ? "selected" : ""} value="${s}">${s || "未处理"}</option>`).join("");
+  // Skip the badge when everything is new (first run): a badge on every card means nothing.
+  const s = state.data.stats;
+  const isNew = daysAgo(j.first_seen) <= 7 && s.new_today < s.total;
+  const opts = STATUSES.map((s) => `<option ${s === (p.status || "") ? "selected" : ""} value="${s}">${s || "标记状态"}</option>`).join("");
+  const cities = j.cities.slice(0, 3).join(" / ") + (j.cities.length > 3 ? ` 等 ${j.cities.length} 城` : "");
+  // Skills I have first, so the overlap is visible at a glance.
+  const skills = [...j.skills].sort((a, b) => mySkills.has(b) - mySkills.has(a)).slice(0, 8);
+  // Skills, city and direction are already shown above; keep only the extra signals.
+  const reasons = (j.reasons || []).filter((r) => !/^(技能|城市|方向)/.test(r));
   return `<article class="job">
-    <div class="score">${Math.round(j.match)}<small>匹配</small></div>
+    ${avatar(j.company)}
     <div>
-      <p class="title"><a href="${esc(j.url)}" target="_blank" rel="noopener">${esc(j.title)}</a></p>
-      <div class="sub">${esc(j.company)} · ${esc(j.ent)} · ${esc(j.direction)} · ${esc(j.cities.slice(0, 4).join(" / ") || "地点未知")}${j.cities.length > 4 ? " 等" : ""}</div>
-      <div class="tags">
-        ${isNew ? '<span class="tag new">新</span>' : ""}
-        ${j.skills.slice(0, 10).map((s) => `<span class="tag ${mySkills.has(s) ? "hit" : ""}">${esc(s)}</span>`).join("")}
+      <div class="title-row">
+        <h3 class="title"><a href="${esc(j.url)}" target="_blank" rel="noopener">${esc(j.title)}</a></h3>
+        ${isNew ? '<span class="badge badge-new">新</span>' : ""}
+        ${p.status ? `<span class="badge badge-status">${esc(p.status)}</span>` : ""}
       </div>
-      ${j.reasons?.length ? `<div class="reasons">${esc(j.reasons.join("　"))}</div>` : ""}
+      <div class="facts"><span>${esc(cities || "地点未注明")}</span><span>${esc(j.direction)}</span><span>${esc(j.recruit)}</span></div>
+      <div class="company-line"><b>${esc(j.company)}</b> · ${esc(j.ent)}</div>
+      <div class="tags">${skills.map((s) => `<span class="tag ${mySkills.has(s) ? "hit" : ""}">${esc(s)}</span>`).join("")}</div>
+      ${reasons.length ? `<div class="reasons">${reasons.map((r) => `<span class="${r.startsWith("⚠") ? "warn" : ""}">${esc(r)}</span>`).join("")}</div>` : ""}
     </div>
     <div class="side">
-      <a class="apply" href="${esc(j.url)}" target="_blank" rel="noopener">去投递 ↗</a>
-      <select data-id="${esc(j.id)}">${opts}</select>
-      <span class="date">${p.date ? esc(p.status + " " + p.date) : "发现于 " + esc(j.first_seen || "-")}</span>
+      <div class="score ${scoreClass(j.match)}">${Math.round(j.match)}<small>匹配</small></div>
+      <div class="actions">
+        <select class="status-select ${p.status ? "set" : ""}" data-id="${esc(j.id)}" aria-label="投递状态">${opts}</select>
+        <a class="btn btn-primary" href="${esc(j.url)}" target="_blank" rel="noopener">去投递</a>
+      </div>
+      <span class="date">${p.date ? esc(p.status + " · " + p.date) : "发现于 " + esc(j.first_seen || "-")}</span>
     </div>
   </article>`;
 }
@@ -131,29 +153,35 @@ function filteredCompanies() {
 function companyCard(c) {
   const m = marks[c.company] || {};
   const cov = coverage(c);
-  const opts = CMARKS.map((s) => `<option ${s === (m.mark || "") ? "selected" : ""} value="${s}">${s || "未标记"}</option>`).join("");
+  const opts = CMARKS.map((s) => `<option ${s === (m.mark || "") ? "selected" : ""} value="${s}">${s || "标记"}</option>`).join("");
   const n = c.jobs_campus + c.jobs_intern;
   const statusText = cov !== "scraped" ? c.status_label
     : n ? `已抓取 · 校招 ${c.jobs_campus} / 实习 ${c.jobs_intern}`
     : "已接入 · 目前没有在招的校招/实习岗位";
   const entry = c.portal
-    ? `<a class="apply" href="${esc(c.portal)}" target="_blank" rel="noopener">官网入口 ↗</a>`
+    ? `<a class="btn btn-primary" href="${esc(c.portal)}" target="_blank" rel="noopener">官网投递</a>`
     : "";
   const rawExtra = c.portal_raw && c.portal_raw !== c.portal ? `<div class="linkish muted">入口备注：${esc(c.portal_raw.replace(c.portal, "").trim())}</div>` : "";
   return `<article class="company">
+    ${avatar(c.company)}
     <div>
-      <p class="name">${esc(c.company)}</p>
-      <div class="sub">${esc(c.cat || "未分类")} · ${esc(c.ent)}${c.opened ? " · " + esc(c.opened) + " 开启" : ""}
-        <span class="status ${cov === "scraped" ? "scraped" : cov === "note" ? "note-only" : ""}">${esc(statusText)}</span></div>
-      ${c.roles ? `<div class="roles"><b>方向：</b>${esc(c.roles)}</div>` : ""}
+      <div class="title-row">
+        <h3 class="name">${esc(c.company)}</h3>
+        <span class="status ${cov === "scraped" ? "scraped" : cov === "note" ? "note-only" : ""}">${esc(statusText)}</span>
+        ${m.mark ? `<span class="badge badge-status">${esc(m.mark)}</span>` : ""}
+      </div>
+      <div class="facts"><span>${esc(c.cat || "未分类")}</span><span>${esc(c.ent)}</span>${c.opened ? `<span>${esc(c.opened)} 开启</span>` : ""}</div>
+      ${c.roles ? `<div class="roles">招聘方向：${esc(c.roles)}</div>` : ""}
       ${c.note ? `<div class="note">${esc(c.note)}</div>` : ""}
       ${rawExtra}
     </div>
     <div class="side">
-      ${entry}
-      ${n ? `<button class="see-jobs" data-company="${esc(c.company)}" data-src="${esc(c.src || "")}" data-tab="${c.jobs_campus ? "校招" : "实习"}">看 ${n} 个岗位</button>` : ""}
-      <select data-company-mark="${esc(c.company)}">${opts}</select>
-      <span class="date">${m.date ? esc(m.mark + " " + m.date) : ""}</span>
+      <div class="actions">
+        <select class="status-select ${m.mark ? "set" : ""}" data-company-mark="${esc(c.company)}" aria-label="公司标记">${opts}</select>
+        ${entry}
+      </div>
+      ${n ? `<button class="btn see-jobs" data-company="${esc(c.company)}" data-src="${esc(c.src || "")}" data-tab="${c.jobs_campus ? "校招" : "实习"}">查看 ${n} 个岗位</button>` : ""}
+      <span class="date">${m.date ? esc(m.mark + " · " + m.date) : ""}</span>
     </div>
   </article>`;
 }
@@ -161,7 +189,7 @@ function renderCompanies() {
   const list = filteredCompanies();
   const all = state.data.companies || [];
   const scraped = all.filter((c) => coverage(c) === "scraped").length;
-  $("#status-bar").textContent = `共 ${list.length} 家公司（名单 ${all.length} 家，其中 ${scraped} 家能抓到具体岗位，其余展示投递说明和官网入口）`;
+  $("#status-bar").innerHTML = `<span>共 <b>${list.length}</b> 家公司</span><span>· 名单 ${all.length} 家，其中 ${scraped} 家可直接看到岗位，其余提供官网入口与投递说明</span>`;
   $("#list").innerHTML = list.length
     ? list.slice(0, state.shown).map(companyCard).join("")
     : '<div class="empty">没有符合条件的公司</div>';
@@ -173,8 +201,9 @@ function render() {
   $("#company-count").textContent = (state.data.companies || []).length || "";
   if (state.tab === "companies") return renderCompanies();
   const { list, mySkills } = filtered();
-  $("#status-bar").innerHTML = esc(`共 ${list.length} 个岗位` + (state.tab !== "mine" && state.sort === "rec" ? "（推荐排序：前 200 个做了公司多样化，其余按匹配分）" : ""))
-    + (state.only ? `　只看：${esc(state.only.label)} <a href="#" id="clear-only">清除</a>` : "");
+  const sortNote = state.tab !== "mine" && state.sort === "rec" ? "· 按匹配度推荐，同一公司的岗位会适当分散" : "";
+  $("#status-bar").innerHTML = `<span>共 <b>${list.length.toLocaleString()}</b> 个岗位</span><span>${sortNote}</span>`
+    + (state.only ? `<span>· 只看 ${esc(state.only.label)} <a href="#" id="clear-only">清除</a></span>` : "");
   $("#list").innerHTML = list.length
     ? list.slice(0, state.shown).map((j) => card(j, mySkills)).join("")
     : '<div class="empty">没有符合条件的岗位</div>';
@@ -194,7 +223,10 @@ function fillFilters() {
   for (const [c, n] of countBy(companies, (c) => c.cat || "未分类")) $("#cat").insertAdjacentHTML("beforeend", `<option value="${esc(c === "未分类" ? "" : c)}">${esc(c)} (${n})</option>`);
   for (const m of CMARKS.filter(Boolean)) $("#cmark-filter").insertAdjacentHTML("beforeend", `<option value="${esc(m)}">${esc(m)}</option>`);
   const s = state.data.stats;
-  $("#meta").textContent = `更新于 ${state.data.generated_at} · ${s.total} 个岗位 · 今日新增 ${s.new_today}` + (s.failed_sources?.length ? ` · ${s.failed_sources.length} 个来源今天抓取失败（沿用旧数据）` : "");
+  // On the very first run every job is "new today", which says nothing.
+  const fresh = s.new_today && s.new_today < s.total ? ` · 今日新增 ${s.new_today.toLocaleString()}` : "";
+  $("#meta").textContent = `${s.total.toLocaleString()} 个岗位${fresh} · 更新于 ${state.data.generated_at}`
+    + (s.failed_sources?.length ? ` · ${s.failed_sources.length} 个来源今日未更新` : "");
 }
 
 // ---------- resume upload: parse + re-score, all inside this browser ----------
@@ -259,10 +291,11 @@ function bm25Scores(docs, query, k1 = 1.5, b = 0.75) {
 function rescore(skills) {
   const jobs = state.data.jobs, prefs = state.data.prefs || {};
   // The embedding channel needs the model, which only runs in Python, so a
-  // browser re-score drops `emb` and rescales the other weights to sum to 1.
-  const w = { ...(prefs.weights || { bm25: 0.35, skill: 0.35, direction: 0.2, city: 0.1 }) };
+  // browser re-score uses the no-embedding weight set, rescaled to sum to 1.
+  const w = { ...(prefs.weights_no_emb || prefs.weights || { bm25: 0.35, skill: 0.35, direction: 0.2, city: 0.1 }) };
   delete w.emb;
-  const total = Object.values(w).reduce((a, b) => a + b, 0) || 1;
+  // Positive weights only: `avoid` is a penalty (see matching/rank.py).
+  const total = Object.values(w).reduce((a, b) => a + Math.max(b, 0), 0) || 1;
   for (const k in w) w[k] /= total;
   const want = new Set(skills), dirs = new Set(prefs.directions || []), cities = new Set(prefs.cities || []);
   const raw = bm25Scores(jobs.map((j) => tokenize(j.title + " " + j.skills.join(" "))), tokenize(skills.join(" ")));
@@ -274,10 +307,13 @@ function rescore(skills) {
       skill: j.skills.length ? hit.length / (j.skills.length + 1) : 0,
       direction: dirs.has(j.direction) ? 1 : 0,
       city: !cities.size || j.cities.some((c) => cities.has(c)) ? 1 : 0,
+      avoid: j.avoid || 0, // computed in Python from the JD text, which the page doesn't have
     };
-    j.match = Math.round(1000 * (w.bm25 * f.bm25 + w.skill * f.skill + w.direction * f.direction + w.city * f.city)) / 10;
+    const s = Object.keys(f).reduce((a, k) => a + (w[k] || 0) * f[k], 0);
+    j.match = Math.round(1000 * Math.max(0, s)) / 10;
+    const warn = (j.reasons || []).find((r) => r.startsWith("⚠"));
     const cHit = j.cities.filter((c) => cities.has(c));
-    j.reasons = [hit.length && "技能: " + hit.slice(0, 6).join(", "), f.direction && "方向: " + j.direction, cHit.length && "城市: " + cHit.slice(0, 3).join("/")].filter(Boolean);
+    j.reasons = [hit.length && "技能: " + hit.slice(0, 6).join(", "), f.direction && "方向: " + j.direction, cHit.length && "城市: " + cHit.slice(0, 3).join("/"), warn].filter(Boolean);
   });
   mmr(jobs, prefs.rec_top_n || 200);
 }
@@ -301,8 +337,8 @@ function loadLocalProfile() {
 }
 function showResumeState(local) {
   $("#resume-state").textContent = local
-    ? `已用你上传的简历打分（${state.skills.length} 个技能，${local.date}；网页端不含语义召回）`
-    : `使用默认技能（config/profile.json，${state.skills.length} 个），点这里上传简历`;
+    ? `按你的简历打分 · ${state.skills.length} 个技能 · ${local.date}`
+    : `当前按示例简历排序 · 上传你的简历重新打分`;
   $("#resume-skills").value = state.skills.join(", ");
 }
 function initResume() {

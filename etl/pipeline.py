@@ -114,6 +114,7 @@ def build(raw_by_src, prev_jobs, history, today, blacklist, stale_days=3, log=pr
 
     stats = {
         "total": len(merged),
+        "sources": len(raw_by_src),
         "failed_sources": failed,
         "kept_stale": kept_stale,
         "new_today": sum(1 for j in merged if j.get("first_seen") == today),

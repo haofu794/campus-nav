@@ -3,10 +3,12 @@ name: daily-update
 on:
   schedule:
     - cron: "0 23 * * *"   # 23:00 UTC = 07:00 Beijing time
-  workflow_dispatch:         # "Run workflow" button for manual testing
+  workflow_dispatch:         # "Run workflow" button for manual runs
 
 permissions:
-  contents: write            # needed to commit data.json back
+  contents: write            # commit the small state files back
+  pages: write               # publish the site
+  id-token: write            # required by actions/deploy-pages
 
 concurrency:
   group: daily-update
@@ -16,6 +18,9 @@ jobs:
   update:
     runs-on: ubuntu-latest
     timeout-minutes: 150   # ~300 career sites + Guopin; the weekly re-probe adds a few minutes
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
@@ -27,7 +32,7 @@ jobs:
       - run: pip install -r requirements.txt
 
       # Keep the embedding model (~90 MB) and yesterday's job vectors between
-      # runs, so each day only downloads nothing and embeds only new jobs.
+      # runs, so each day downloads nothing and embeds only new jobs.
       - uses: actions/cache@v4
         with:
           path: |
@@ -36,16 +41,41 @@ jobs:
           key: emb-${{ github.run_id }}
           restore-keys: emb-
 
+      # data.json (~20 MB) is published to Pages, not committed: committing it
+      # daily would grow the repo by gigabytes a year. Yesterday's copy is
+      # fetched back from the live site, because the pipeline needs it to keep
+      # jobs of sources that fail today and to know when each job first appeared.
+      - name: Fetch yesterday's data.json from the live site
+        run: |
+          url="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/data.json"
+          if curl -fsSL "$url" -o /tmp/prev.json; then
+            mv /tmp/prev.json web/data.json && echo "got $(du -h web/data.json | cut -f1)"
+          else
+            echo "no live copy yet (first deploy); starting from scratch"
+          fi
+
       - name: Scrape, clean, rank
         run: python run.py
 
-      - name: Commit new data
+      - name: Commit state files
         run: |
           git config user.name "daily-bot"
           git config user.email "daily-bot@users.noreply.github.com"
-          # platform_cache.json = which recruiting system each career site uses;
-          # committing it means the ~800 sites are only re-probed once a week.
-          git add web/data.json data/history.json data/run_log.json data/platform_cache.json
+          # history.json = first/last seen dates; platform_cache.json = which
+          # recruiting system each career site uses (re-probed weekly).
+          git add data/history.json data/run_log.json data/platform_cache.json
           git diff --cached --quiet && echo "no changes" && exit 0
           git commit -m "data: $(date -u +%F)"
           git push
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+
+      - id: deploy
+        uses: actions/deploy-pages@v4
+
+      # Runs after deploy, so a failure here never takes the site down; it only
+      # turns the run red, which makes GitHub email me.
+      - name: Health check
+        run: python tools/healthcheck.py

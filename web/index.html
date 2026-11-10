@@ -3,81 +3,115 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>校招导航</title>
+  <title>校招导航 · 2027 届校招与实习岗位聚合</title>
+  <meta name="description" content="聚合 1000+ 家企业的 2027 届校招与实习岗位，每日更新，支持按简历匹配排序与投递进度管理。">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div class="brand">
-      <h1>校招导航</h1>
-      <span id="meta" class="muted">加载中…</span>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#">
+        <span class="logo">校</span>
+        <span class="brand-name">校招导航</span>
+      </a>
+      <nav id="tabs" aria-label="主导航">
+        <button data-tab="校招" class="active">校招</button>
+        <button data-tab="实习">实习</button>
+        <button data-tab="companies">公司目录 <span id="company-count" class="count"></span></button>
+        <button data-tab="mine">我的投递 <span id="mine-count" class="count"></span></button>
+      </nav>
+      <span id="meta" class="meta">加载中…</span>
     </div>
-    <nav id="tabs">
-      <button data-tab="校招" class="active">校招</button>
-      <button data-tab="实习">实习</button>
-      <button data-tab="mine">我的投递 <span id="mine-count"></span></button>
-      <button data-tab="companies">公司目录 <span id="company-count"></span></button>
-    </nav>
   </header>
 
-  <section id="filters">
-    <input id="q" type="search" placeholder="搜索公司 / 岗位 / 技能 / 投递说明">
-    <select id="direction" class="jobs-only"><option value="">全部方向</option></select>
-    <select id="city" class="jobs-only"><option value="">全部城市</option></select>
-    <select id="cat" class="companies-only"><option value="">全部行业</option></select>
-    <select id="cstatus" class="companies-only">
-      <option value="">全部覆盖情况</option>
-      <option value="scraped">已抓取岗位</option>
-      <option value="link">只有入口链接</option>
-      <option value="note">只有投递说明</option>
-    </select>
-    <select id="cmark-filter" class="companies-only">
-      <option value="">全部标记</option>
-      <option value="__none">未标记</option>
-    </select>
-    <div id="ent" class="chips"></div>
-    <label class="check jobs-only"><input id="only-new" type="checkbox"> 只看 7 天内新增</label>
-    <label class="check jobs-only"><input id="hide-applied" type="checkbox"> 隐藏已处理</label>
-    <select id="sort" class="jobs-only">
-      <option value="rec">推荐（多样化）</option>
-      <option value="match">匹配分</option>
-      <option value="new">最新发现</option>
-    </select>
-    <select id="csort" class="companies-only">
-      <option value="opened">按开启时间</option>
-      <option value="jobs">按岗位数</option>
-      <option value="name">按公司名</option>
-    </select>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="搜索公司、岗位、技能或投递说明，空格分隔多个词">
+      </div>
+      <div id="ent" class="chips" aria-label="企业类型"></div>
+    </div>
   </section>
 
-  <details id="resume" class="jobs-only">
-    <summary>简历匹配：<span id="resume-state">加载中…</span></summary>
-    <div class="resume-body">
-      <p class="muted">简历只在这个浏览器里解析，不会上传到任何地方。扫描版 PDF 读不出文字的话，直接把简历内容粘贴到下面的框里。</p>
-      <div class="resume-row">
-        <label class="file-btn">选择 PDF 简历<input id="resume-file" type="file" accept="application/pdf"></label>
-        <span id="resume-file-name" class="muted"></span>
-      </div>
-      <textarea id="resume-text" rows="5" placeholder="或者在这里粘贴简历文字，然后点「从简历识别技能」"></textarea>
-      <label class="muted" for="resume-skills">识别出的技能（可以手动增删，用逗号分隔）</label>
-      <input id="resume-skills" type="text">
-      <div class="resume-row">
-        <button id="resume-extract">从简历识别技能</button>
-        <button id="resume-apply" class="primary">按这些技能重新打分</button>
-        <button id="resume-clear">恢复默认</button>
-      </div>
-    </div>
-  </details>
+  <div class="layout">
+    <aside class="sidebar">
+      <details id="resume" class="panel jobs-only">
+        <summary>
+          <span class="panel-title">简历匹配</span>
+          <span id="resume-state" class="panel-sub">加载中…</span>
+        </summary>
+        <div class="resume-body">
+          <p class="hint">简历只在本机浏览器内解析，不会上传。扫描版 PDF 无法识别时，可直接粘贴文字。</p>
+          <label class="btn btn-block">上传 PDF 简历<input id="resume-file" type="file" accept="application/pdf"></label>
+          <span id="resume-file-name" class="hint"></span>
+          <textarea id="resume-text" rows="4" placeholder="或在此粘贴简历文字"></textarea>
+          <button id="resume-extract" class="btn btn-block">从简历识别技能</button>
+          <label class="field-label" for="resume-skills">识别出的技能（可增删，逗号分隔）</label>
+          <input id="resume-skills" type="text">
+          <div class="row">
+            <button id="resume-apply" class="btn btn-primary">重新打分</button>
+            <button id="resume-clear" class="btn btn-ghost">恢复默认</button>
+          </div>
+        </div>
+      </details>
 
-  <section id="status-bar" class="muted"></section>
-  <main id="list"></main>
-  <div id="more-wrap"><button id="more">加载更多</button></div>
+      <div class="panel panel-filters">
+        <div class="panel-title">筛选</div>
+        <label class="field-label jobs-only" for="direction">方向</label>
+        <select id="direction" class="jobs-only"><option value="">全部方向</option></select>
+        <label class="field-label jobs-only" for="city">城市</label>
+        <select id="city" class="jobs-only"><option value="">全部城市</option></select>
+        <label class="field-label jobs-only" for="sort">排序</label>
+        <select id="sort" class="jobs-only">
+          <option value="rec">推荐（匹配 + 公司多样化）</option>
+          <option value="match">匹配分从高到低</option>
+          <option value="new">最新发现</option>
+        </select>
+        <label class="toggle jobs-only"><input id="only-new" type="checkbox"><span>只看 7 天内新增</span></label>
+        <label class="toggle jobs-only"><input id="hide-applied" type="checkbox"><span>隐藏已处理的岗位</span></label>
 
-  <footer class="muted">
-    <span>投递进度只存在这个浏览器（localStorage）。</span>
-    <button id="export">导出进度</button>
-    <label class="file-btn">导入进度<input id="import" type="file" accept="application/json"></label>
-    <span>部分数据来自 <a href="https://github.com/Ajax-1/campus-radar" target="_blank" rel="noopener">campus-radar</a>（MIT）。</span>
+        <label class="field-label companies-only" for="cat">行业</label>
+        <select id="cat" class="companies-only"><option value="">全部行业</option></select>
+        <label class="field-label companies-only" for="cstatus">覆盖情况</label>
+        <select id="cstatus" class="companies-only">
+          <option value="">全部</option>
+          <option value="scraped">已抓取岗位</option>
+          <option value="link">只有官网入口</option>
+          <option value="note">只有投递说明</option>
+        </select>
+        <label class="field-label companies-only" for="cmark-filter">我的标记</label>
+        <select id="cmark-filter" class="companies-only">
+          <option value="">全部</option>
+          <option value="__none">未标记</option>
+        </select>
+        <label class="field-label companies-only" for="csort">排序</label>
+        <select id="csort" class="companies-only">
+          <option value="opened">按开启时间</option>
+          <option value="jobs">按岗位数</option>
+          <option value="name">按公司名</option>
+        </select>
+      </div>
+
+      <div class="panel panel-quiet">
+        <div class="panel-title">进度备份</div>
+        <p class="hint">投递进度与公司标记保存在本浏览器（localStorage），换设备前请先导出。</p>
+        <div class="row">
+          <button id="export" class="btn">导出</button>
+          <label class="btn">导入<input id="import" type="file" accept="application/json"></label>
+        </div>
+      </div>
+    </aside>
+
+    <main>
+      <div id="status-bar" class="status-bar"></div>
+      <div id="list" class="list"></div>
+      <div id="more-wrap"><button id="more" class="btn">加载更多</button></div>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <p>岗位信息来自各企业公开的招聘页面，仅作信息聚合，请以企业官网为准，投递均跳转至官网。部分数据来自 <a href="https://github.com/Ajax-1/campus-radar" target="_blank" rel="noopener">campus-radar</a>（MIT）。</p>
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>

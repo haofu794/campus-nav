@@ -69,15 +69,24 @@ def sample(n_top=50, n_rand=50):
     print(f"wrote {LABELS} with {len(picks)} rows -- fill the label column (0/1/2)")
 
 
-def evaluate(weights):
-    debug = json.loads(FEATS.read_text(encoding="utf-8"))
+def load_labels(debug):
+    # Both sheets: the original 100 and the 40 random top-region jobs (labels_ppi.csv).
     labels = {}
-    with LABELS.open(encoding="utf-8-sig") as f:
-        for row in csv.DictReader(f):
-            if row["label"].strip() and row["id"] in debug:
-                labels[row["id"]] = int(row["label"])
+    for path in (LABELS, ROOT / "data" / "labels_ppi.csv"):
+        if not path.exists():
+            continue
+        with path.open(encoding="utf-8-sig") as f:
+            for row in csv.DictReader(f):
+                if row["label"].strip() and row["id"] in debug:
+                    labels[row["id"]] = int(row["label"])
     if not labels:
         sys.exit("no labeled rows yet")
+    return labels
+
+
+def evaluate(weights):
+    debug = json.loads(FEATS.read_text(encoding="utf-8"))
+    labels = load_labels(debug)
     print(f"{len(labels)} labeled jobs")
     for name, w in VARIANTS.items():
         w = w or weights
@@ -90,9 +99,23 @@ def evaluate(weights):
 
 
 if __name__ == "__main__":
+    from matching.rank import DEFAULT_WEIGHTS
+    prefs = json.loads((ROOT / "config" / "my_prefs.json").read_text(encoding="utf-8"))
+    weights = {**DEFAULT_WEIGHTS, **prefs.get("weights", {})}
     if sys.argv[1:] == ["sample"]:
         sample()
+    elif sys.argv[1:] == ["tune"]:
+        from matching import tune
+        debug = json.loads(FEATS.read_text(encoding="utf-8"))
+        tune.run(load_labels(debug), debug, weights)
+    elif sys.argv[1:2] in (["llm-label"], ["ppi"]):
+        from matching import judge
+        debug = json.loads(FEATS.read_text(encoding="utf-8"))
+        human = {**judge.read_sheet(LABELS), **judge.read_sheet(judge.PPI_SHEET)}
+        human = {i: v for i, v in human.items() if i in debug}
+        if sys.argv[1] == "llm-label":
+            judge.llm_label(human, weights)
+        else:
+            judge.ppi(weights, human)
     else:
-        prefs = json.loads((ROOT / "config" / "my_prefs.json").read_text(encoding="utf-8"))
-        from matching.rank import DEFAULT_WEIGHTS
-        evaluate({**DEFAULT_WEIGHTS, **prefs.get("weights", {})})
+        evaluate(weights)
