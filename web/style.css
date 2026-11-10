@@ -1,0 +1,134 @@
+:root {
+  --bg: #f7f7f5;
+  --card: #ffffff;
+  --text: #1f1f1d;
+  --muted: #74736d;
+  --line: #e4e3dd;
+  --accent: #1d6f5f;
+  --accent-soft: #e3f1ec;
+  --warn: #9a5b13;
+  --radius: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1b1b1a; --card: #242422; --text: #ecebe6; --muted: #9c9a92;
+    --line: #3a3936; --accent: #5dcaa5; --accent-soft: #1f3a32; --warn: #e3a857;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 14px/1.6 -apple-system, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+}
+a { color: var(--accent); }
+.muted { color: var(--muted); }
+
+header {
+  position: sticky; top: 0; z-index: 2; background: var(--bg);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 14px 24px; border-bottom: 1px solid var(--line);
+}
+.brand { display: flex; align-items: baseline; gap: 12px; }
+h1 { font-size: 20px; font-weight: 600; margin: 0; }
+nav button {
+  border: 1px solid var(--line); background: var(--card); color: var(--text);
+  padding: 6px 14px; border-radius: 999px; cursor: pointer; font-size: 14px;
+}
+nav button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+#filters {
+  display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 14px 24px;
+}
+#filters input[type=search], #filters select {
+  height: 34px; padding: 0 10px; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--card); color: var(--text); font-size: 14px;
+}
+#q { min-width: 240px; flex: 1 1 240px; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip {
+  border: 1px solid var(--line); background: var(--card); color: var(--text);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer; font-size: 13px;
+}
+.chip.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.check { display: flex; align-items: center; gap: 4px; color: var(--muted); }
+
+#resume {
+  margin: 0 24px 12px; background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 10px 14px;
+}
+#resume summary { cursor: pointer; font-weight: 600; }
+.resume-body { display: grid; gap: 8px; margin-top: 10px; }
+.resume-body p { margin: 0; }
+.resume-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+#resume textarea, #resume-skills {
+  width: 100%; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px;
+  background: var(--bg); color: var(--text); font: inherit;
+}
+#resume button {
+  border: 1px solid var(--line); background: var(--card); color: var(--text);
+  padding: 6px 14px; border-radius: 8px; cursor: pointer; font-size: 13px;
+}
+#resume button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+#status-bar { padding: 0 24px 8px; }
+#list { display: grid; gap: 10px; padding: 0 24px; }
+
+.job {
+  display: grid; grid-template-columns: 56px 1fr auto; gap: 14px; align-items: start;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 14px 16px;
+}
+.score {
+  text-align: center; font-weight: 600; font-size: 18px; color: var(--accent);
+  border-radius: 8px; padding: 6px 0; background: var(--accent-soft);
+}
+.score small { display: block; font-size: 11px; font-weight: 400; color: var(--muted); }
+.title { font-size: 15px; font-weight: 600; margin: 0 0 2px; }
+.title a { color: var(--text); text-decoration: none; }
+.title a:hover { color: var(--accent); text-decoration: underline; }
+.sub { color: var(--muted); font-size: 13px; }
+.tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.tag { font-size: 12px; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.tag.hit { border-color: var(--accent); color: var(--accent); }
+.tag.new { border-color: var(--warn); color: var(--warn); }
+.reasons { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.side { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+.side select { height: 30px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--text); }
+.apply {
+  display: inline-block; padding: 5px 12px; border-radius: 8px; background: var(--accent);
+  color: #fff; text-decoration: none; font-size: 13px;
+}
+.date { font-size: 12px; color: var(--muted); }
+
+#more-wrap { text-align: center; padding: 16px; }
+#more, footer button, .file-btn {
+  border: 1px solid var(--line); background: var(--card); color: var(--text);
+  padding: 6px 14px; border-radius: 8px; cursor: pointer; font-size: 13px;
+}
+.file-btn input { display: none; }
+footer { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; padding: 16px 24px 32px; }
+.empty { padding: 40px; text-align: center; color: var(--muted); }
+
+/* Company directory: one tab shows job filters, the other company filters. */
+body.view-companies .jobs-only { display: none; }
+body:not(.view-companies) .companies-only { display: none; }
+#filters select.companies-only { height: 34px; padding: 0 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--text); }
+.company {
+  display: grid; grid-template-columns: 1fr auto; gap: 14px;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px;
+}
+.company .name { font-size: 15px; font-weight: 600; margin: 0 0 2px; }
+.company .note { margin-top: 6px; font-size: 13px; line-height: 1.7; white-space: pre-wrap; }
+.company .roles { margin-top: 4px; font-size: 13px; }
+.company .roles b { font-weight: 600; }
+.status { font-size: 12px; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.status.scraped { border-color: var(--accent); color: var(--accent); }
+.status.note-only { border-color: var(--warn); color: var(--warn); }
+.linkish { font-size: 13px; color: var(--text); word-break: break-all; }
+.see-jobs { border: 1px solid var(--accent); background: transparent; color: var(--accent); border-radius: 8px; padding: 5px 12px; cursor: pointer; font-size: 13px; }
+
+@media (max-width: 640px) {
+  .job, .company { grid-template-columns: 1fr; }
+  .side { flex-direction: row; align-items: center; justify-content: space-between; }
+  header, #filters, #list, #status-bar { padding-left: 12px; padding-right: 12px; }
+}

@@ -1,0 +1,5 @@
+requests>=2.31
+pypdf>=4.0
+numpy>=1.24
+# Optional: embedding recall channel. Without it, run.py skips that channel.
+fastembed>=0.4

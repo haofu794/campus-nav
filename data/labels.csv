@@ -1,0 +1,101 @@
+﻿label,company,title,recruit,cities,direction,skills,url,id
+,快手,AI应用开发工程师,校招,北京,算法/AI,"Java, Python, RAG, Agent, 大模型, 机器学习, 深度学习, 多模态",https://campus.kuaishou.cn/recruit/campus/e/#/campus/job-info/13150,campus_radar:kuaishou:kuaishou-13150
+,百度,算法实习生,实习,北京,算法/AI,"Python, PyTorch, 大模型, 机器学习, 深度学习, 数据分析",https://talent.baidu.com/jobs/detail/INTERN/3ace031f-5c9f-41a5-bc41-096099b4be37,campus_radar:baidu:baidu-3ace031f-5c9f-41a5-bc41-096099b4be37
+,字节跳动,AI应用算法工程师 - 小荷健康,校招,北京,算法/AI,"Python, C++, Agent, 大模型, 机器学习, 深度学习",https://jobs.bytedance.com/campus/position/7665593225248819461/detail,campus_radar:bytedance:bytedance-7665593225248819461
+,蔚来,蔚来AGI超星计划-企业智能算法研究员,实习,上海,算法/AI,"Python, PyTorch, RAG, Agent, 大模型, 机器学习, 深度学习, 强化学习",https://nio.jobs.feishu.cn/campus/position/7663323658521807113/detail,campus_radar:nio:nio-7663323658521807113
+,字节跳动,音频AI评测工程师 - 抖音,校招,北京,算法/AI,"Python, RAG, Agent, 大模型, 机器学习, 深度学习",https://jobs.bytedance.com/campus/position/7665703027932940549/detail,campus_radar:bytedance:bytedance-7665703027932940549
+,快手,【留用实习】AI应用开发工程师,实习,北京,算法/AI,"Java, Python, RAG, Agent, 大模型, 机器学习, 深度学习, 多模态",https://campus.kuaishou.cn/recruit/campus/e/#/campus/job-info/11262,campus_radar:kuaishou:kuaishou-11262
+,阿里巴巴,阿里妈妈-AI应用算法实习生,实习,北京,算法/AI,"PyTorch, TensorFlow, RAG, Agent, 大模型, 机器学习, 深度学习, NLP",https://campus-talent.alibaba.com/campus/position/199903900055,campus_radar:alibaba:alibaba-199903900055
+,中核集团（中国核工业集团）,检验科医师,校招,北京,其他,,https://cnnc.zhiye.com/campus/detail?jobAdId=7c1c9b84-246c-471f-b7cf-e9be65bb1c13,beisen:cnnc:7c1c9b84-246c-471f-b7cf-e9be65bb1c13
+,中乔体育,管培生（商品运营方向）-成都,校招,成都,职能/管培,"数据分析, 统计学",https://qiaodantiyu.zhiye.com/campus/detail?jobAdId=bfb47014-3063-4475-b8d1-65e8f9a07be4,beisen:qiaodantiyu:bfb47014-3063-4475-b8d1-65e8f9a07be4
+,腾讯,元宝-大模型后训练算法研究,校招,深圳/北京/上海,算法/AI,"Python, PyTorch, Agent, 大模型, 机器学习, 深度学习, NLP",https://join.qq.com/post_detail.html?postid=1296891644968402944,campus_radar:tencent:tencent-1296891644968402944
+,字节跳动,数据科学实习生-抖音电商,实习,北京,数据,"Python, SQL, RAG, Agent, 大模型, 机器学习, 数据分析",https://jobs.bytedance.com/campus/position/7660773799478102325/detail,campus_radar:bytedance:bytedance-7660773799478102325
+,蔚来,校招-算法研发工程师,校招,上海,算法/AI,"Python, PyTorch, TensorFlow, RAG, Agent, 大模型, 机器学习, 深度学习",https://nio.jobs.feishu.cn/campus/position/7673027258018269478/detail,campus_radar:nio:nio-7673027258018269478
+,阿里巴巴,算法工程师-推荐算法大模型应用方向（T-Star Lab日常实习）,实习,北京/杭州,算法/AI,"Java, Python, C++, PyTorch, TensorFlow, 大模型, 机器学习, 计算机视觉",https://campus-talent.alibaba.com/campus/position/199903880037,campus_radar:alibaba:alibaba-199903880037
+,阿里巴巴,LLM大模型应用算法实习生,实习,杭州,算法/AI,"Python, PyTorch, TensorFlow, Transformer, Agent, 大模型, 机器学习, 深度学习",https://campus-talent.alibaba.com/campus/position/199903920049,campus_radar:alibaba:alibaba-199903920049
+,字节跳动,数据科学实习生-抖音电商,实习,上海,数据,"Python, SQL, RAG, Agent, 大模型, 机器学习, 数据分析",https://jobs.bytedance.com/campus/position/7660773953178978613/detail,campus_radar:bytedance:bytedance-7660773953178978613
+,中金公司,项目实习生-投资管理岗,实习,北京,金融/财会,"数据库, Excel, 金融",https://cicc.zhiye.com/campus/detail?jobAdId=9f6c3588-5b94-45de-8c1b-bbc9d6f32fd7,beisen:cicc:9f6c3588-5b94-45de-8c1b-bbc9d6f32fd7
+,腾讯,测试开发,实习,深圳/北京/上海/广州,测试,"Java, Python, Go, C++, Android, iOS, Linux, 操作系统",https://join.qq.com/post_detail.html?postid=1210569901664899072,campus_radar:tencent:tencent-1210569901664899072
+,保利和润,销售管培生（保利和润-安徽）-秋招,校招,合肥,运营/市场,金融,https://polynew.zhiye.com/campus/detail?jobAdId=924d32af-91e5-499f-bf75-47c5130498d8,beisen:polynew:924d32af-91e5-499f-bf75-47c5130498d8
+,腾讯,PC客户端开发,实习,深圳/北京/上海/广州,前端/客户端,"C++, Linux, 操作系统",https://join.qq.com/post_detail.html?postid=1212220582939332608,campus_radar:tencent:tencent-1212220582939332608
+,阿里巴巴,AI Agent应用开发工程师,校招,杭州/上海,算法/AI,"Java, Python, Go, C++, PyTorch, TensorFlow, Transformer, RAG",https://campus-talent.alibaba.com/campus/position/199907700004,campus_radar:alibaba:alibaba-199907700004
+,中国储备粮管理集团有限公司河南分公司,质量检验岗,校招,驻马店,其他,,https://www.iguopin.com/job/detail?id=224856147847286346,guopin:224856147847286346
+,蔚来,Super Sparks-校招-AI大模型应用研究员/工程师,校招,上海/圣何塞,算法/AI,"Linux, PyTorch, TensorFlow, RAG, Agent, 大模型, 深度学习, 多模态",https://nio.jobs.feishu.cn/campus/position/7661854032978463014/detail,campus_radar:nio:nio-7661854032978463014
+,喜茶,门店实习生(上海长宁来福士店),实习,上海,其他,,https://heytea.zhiye.com/campus/detail?jobAdId=e4d66a0d-3d34-47a7-9797-191ad93fbc6c,beisen:heytea:e4d66a0d-3d34-47a7-9797-191ad93fbc6c
+,广东睿华光电科技有限公司,研发储干（工程师/主管）,校招,东莞,后端/开发,数据分析,https://www.iguopin.com/job/detail?id=214839426579170661,guopin:214839426579170661
+,美团,大模型应用算法工程师,校招,北京/上海,算法/AI,"PyTorch, TensorFlow, RAG, Agent, 大模型, 机器学习, 深度学习, NLP",https://zhaopin.meituan.com/web/position/detail?jobUnionId=4697320023&highlightType=campus,campus_radar:meituan:meituan-4697320023
+,字节跳动,AI Agent算法工程师 - 抖音电商,校招,北京/上海/杭州,算法/AI,"Python, C++, Linux, PyTorch, TensorFlow, RAG, Agent, 大模型",https://jobs.bytedance.com/campus/position/7667570226904713477/detail,campus_radar:bytedance:bytedance-7667570226904713477
+,腾讯,AI-HR培训生（沟通方向）,校招,深圳/北京/上海/广州,职能/管培,,https://join.qq.com/post_detail.html?postid=1286682406438715392,campus_radar:tencent:tencent-1286682406438715392
+,阿里巴巴,日常实习生-业务技术-AI Agent应用开发工程师,实习,杭州,算法/AI,"Java, Python, Go, C++, PyTorch, TensorFlow, Transformer, RAG",https://campus-talent.alibaba.com/campus/position/199903920018,campus_radar:alibaba:alibaba-199903920018
+,四方继保,标书技术支持,校招,北京/南京/武汉,其他,,https://sf-auto.zhiye.com/campus/detail?jobAdId=9a7c5ed5-b9fc-4648-8201-0c7ee3d10f32,beisen:sf-auto:9a7c5ed5-b9fc-4648-8201-0c7ee3d10f32
+,中核集团（中国核工业集团）,中核海得威-27届校招-公用工程岗,校招,深圳,其他,,https://cnnc.zhiye.com/campus/detail?jobAdId=5b3a04ae-adc6-4c55-b35d-3a212f144f51,beisen:cnnc:5b3a04ae-adc6-4c55-b35d-3a212f144f51
+,字节跳动,抖音多业务场景的大模型训练与应用-抖音直播（北京/上海/深圳/杭州）,校招,杭州,算法/AI,"PyTorch, Agent, 大模型, 深度学习, 强化学习, 计算机视觉, NLP, Unity",https://jobs.bytedance.com/campus/position/7628081802842327349/detail,campus_radar:bytedance:bytedance-7628081802842327349
+,快手,游戏数值策划,校招,杭州,其他,数据分析,https://campus.kuaishou.cn/recruit/campus/e/#/campus/job-info/9691,campus_radar:kuaishou:kuaishou-9691
+,字节跳动,AI异构计算优化实习生-Seed大模型人才实习,实习,杭州,算法/AI,"大模型, 机器学习, 计算机视觉, NLP, 多模态, 机器人",https://jobs.bytedance.com/campus/position/7626644687092992309/detail,campus_radar:bytedance:bytedance-7626644687092992309
+,广西水利电力建设集团有限公司,运维专业技术人员,校招,拉萨,后端/开发,数据分析,https://www.iguopin.com/job/detail?id=215770137955926205,guopin:215770137955926205
+,联芸科技,资源开发工程师,校招,杭州,后端/开发,风控,https://maxio-tech1.zhiye.com/campus/detail?jobAdId=177f589f-74b9-404a-ba3e-d3dd99e9adb4,beisen:maxio-tech1:177f589f-74b9-404a-ba3e-d3dd99e9adb4
+,百度,大模型算法工程师,校招,北京,算法/AI,"Python, PyTorch, Transformer, RAG, 大模型, 机器学习, 深度学习, 强化学习",https://talent.baidu.com/jobs/detail/GRADUATE/ccfdea4e-4ae4-4954-9062-fd94960a2861,campus_radar:baidu:baidu-ccfdea4e-4ae4-4954-9062-fd94960a2861
+,阿里巴巴,日常实习生-Computer Use Agent-Qwen基础模型,实习,北京/杭州/上海,后端/开发,"Python, PyTorch, TensorFlow, Agent, 大模型, 机器学习, 深度学习, 多模态",https://campus-talent.alibaba.com/campus/position/199909020002,campus_radar:alibaba:alibaba-199909020002
+,百度,大模型应用策略实习生,实习,北京,算法/AI,"Python, PyTorch, TensorFlow, 大模型, 机器学习, 深度学习",https://talent.baidu.com/jobs/detail/INTERN/7ef435eb-b1f2-4d34-991f-cd3fe424e6d2,campus_radar:baidu:baidu-7ef435eb-b1f2-4d34-991f-cd3fe424e6d2
+,中核集团（中国核工业集团）,中核五公司-27届秋招-安全管理,校招,全国,后端/开发,英语,https://cnnc.zhiye.com/campus/detail?jobAdId=b98ea97f-4c17-4b1f-a4c1-b718fb40535d,beisen:cnnc:b98ea97f-4c17-4b1f-a4c1-b718fb40535d
+,腾讯,微信视觉WeMM-Embedding 全模态内容理解研究,实习,北京,算法/AI,"Python, PyTorch, RAG, Agent, 大模型, 机器学习, 深度学习, 多模态",https://join.qq.com/post_detail.html?postid=1307853576416231425,campus_radar:tencent:tencent-1307853576416231425
+,阿里巴巴,日常实习生-业务技术-AI应用算法工程师（LLM）,实习,杭州,算法/AI,"Python, PyTorch, TensorFlow, Transformer, RAG, Agent, 大模型, 机器学习",https://campus-talent.alibaba.com/campus/position/199904320007,campus_radar:alibaba:alibaba-199904320007
+,美团,AI 工程师（实习生）,实习,北京,后端/开发,"Java, Python, SQL, RAG, Agent, 大模型, 机器学习, 深度学习",https://zhaopin.meituan.com/web/position/detail?jobUnionId=4643218943&highlightType=campus,campus_radar:meituan:meituan-4643218943
+,字节跳动,大模型数据（数学方向）实习生 - AI数据与安全,实习,上海,产品,大模型,https://jobs.bytedance.com/campus/position/7680079007236262197/detail,campus_radar:bytedance:bytedance-7680079007236262197
+,字节跳动,大模型应用（评论方向）实习生 - 内容质量与数据服务平台,实习,北京,算法/AI,"Python, SQL, RAG, Agent, 大模型, 机器学习, 计算机视觉",https://jobs.bytedance.com/campus/position/7674910383779268869/detail,campus_radar:bytedance:bytedance-7674910383779268869
+,阳光财产保险,寿险重庆分公司业务管理和培训方向 | 2027雏鹰管培生,校招,重庆,职能/管培,"SQL, 数据分析, Excel, 金融",https://sunzhaopin.sinosig.com/campus/detail?jobAdId=71b548d8-d8d4-4fc5-8dc7-e37df6224d4c,beisen:sunzhaopin.sinosig.com:71b548d8-d8d4-4fc5-8dc7-e37df6224d4c
+,平安金服,校招生(人事方向),校招,合肥,其他,风控,https://campus.pingan.com/positionDetail?positionId=4d5ff324a9aa349493e880640492b931,pingan:4d5ff324a9aa349493e880640492b931
+,阿里巴巴,研究型实习生-智能算法产品事业部-Agent算法工程师,实习,杭州,算法/AI,"Python, PyTorch, RAG, Agent, 大模型, 机器学习, 深度学习, 强化学习",https://campus-talent.alibaba.com/campus/position/199909540008,campus_radar:alibaba:alibaba-199909540008
+,蔚来,校招-大数据分析与应用工程师-智能硬件,校招,上海,数据,"Python, SQL, PyTorch, TensorFlow, Agent, 大模型, 机器学习, 深度学习",https://nio.jobs.feishu.cn/campus/position/7673027020531845422/detail,campus_radar:nio:nio-7673027020531845422
+,平安寿险,NS管培生（武将专项）,校招,苏州,职能/管培,,https://campus.pingan.com/positionDetail?positionId=aca1a162c699393e9a31ef09cfbf6862,pingan:aca1a162c699393e9a31ef09cfbf6862
+,美团,安全AI算法工程师,校招,北京/上海,算法/AI,"Python, PyTorch, RAG, Agent, 大模型, 机器学习, 深度学习, 强化学习",https://zhaopin.meituan.com/web/position/detail?jobUnionId=4697283165&highlightType=campus,campus_radar:meituan:meituan-4697283165
+,沃德精密,检验技术员,校招,东莞市·万江街道,其他,统计学,https://world-machining.zhiye.com/campus/detail?jobAdId=30407987-abd4-4202-97ca-350980a5c68e,beisen:world-machining:30407987-abd4-4202-97ca-350980a5c68e
+,百度,Agent 评测算法实习生,实习,北京,算法/AI,"Python, Linux, Agent, 大模型, 机器学习",https://talent.baidu.com/jobs/detail/INTERN/4bd782af-7dc6-44c1-b02a-e31bb6bc7cb2,campus_radar:baidu:baidu-4bd782af-7dc6-44c1-b02a-e31bb6bc7cb2
+,腾讯,微信搜索-强化学习算法研究,校招,北京,算法/AI,"Python, PyTorch, RAG, Agent, 大模型, 机器学习, 深度学习, 强化学习",https://join.qq.com/post_detail.html?postid=1274481034578500720,campus_radar:tencent:tencent-1274481034578500720
+,传音控股,测试实习生（软件方向）,实习,重庆,测试,"Python, Java",https://transsion.zhiye.com/campus/detail?jobAdId=8ef9129a-0f50-4e36-9380-f20025e1139c,beisen:transsion:8ef9129a-0f50-4e36-9380-f20025e1139c
+,百度,语音合成算法实习工程师(TTS),实习,深圳,算法/AI,"Python, Linux, PyTorch, 大模型, 深度学习",https://talent.baidu.com/jobs/detail/INTERN/6c2b8a7f-5f93-4ff2-97d4-ff9931f9b068,campus_radar:baidu:baidu-6c2b8a7f-5f93-4ff2-97d4-ff9931f9b068
+,快手,治理策略分析师,校招,北京,其他,"SQL, 数据挖掘",https://campus.kuaishou.cn/recruit/campus/e/#/campus/job-info/12461,campus_radar:kuaishou:kuaishou-12461
+,阿里巴巴,研究型实习生-面向复杂场景全双工交互的Omni大模型技术,实习,杭州,后端/开发,"Python, PyTorch, Agent, 大模型, 机器学习, 深度学习, 强化学习",https://campus-talent.alibaba.com/campus/position/199910060003,campus_radar:alibaba:alibaba-199910060003
+,阿里巴巴,研究型实习生 - 大模型 Rubrics 评测与奖励建模算法,实习,北京/杭州,后端/开发,"Python, PyTorch, 大模型, 机器学习, 深度学习",https://campus-talent.alibaba.com/campus/position/199908600001,campus_radar:alibaba:alibaba-199908600001
+,百度,大模型算法工程师,校招,上海,算法/AI,"Python, PyTorch, Transformer, RAG, 大模型, 机器学习, 深度学习, 强化学习",https://talent.baidu.com/jobs/detail/GRADUATE/342cf5e1-8162-46af-8f38-3115cec3d960,campus_radar:baidu:baidu-342cf5e1-8162-46af-8f38-3115cec3d960
+,字节跳动,大模型算法应用开发实习生 - TikTok内容安全平台,实习,上海,算法/AI,"Python, PyTorch, Transformer, RAG, Agent, 大模型, 机器学习, 深度学习",https://jobs.bytedance.com/campus/position/7670843497633614133/detail,campus_radar:bytedance:bytedance-7670843497633614133
+,腾讯,优图实验室—图文(含OCR)多模态视觉细粒度理解研究,实习,合肥,算法/AI,"Python, PyTorch, RAG, 大模型, 计算机视觉, NLP, 多模态, 分布式",https://join.qq.com/post_detail.html?postid=1231829074692139052,campus_radar:tencent:tencent-1231829074692139052
+,快手,【快Star实习】多模态模型优化算法工程师,实习,北京,算法/AI,"Transformer, 大模型, 强化学习, 多模态",https://campus.kuaishou.cn/recruit/campus/e/#/campus/job-info/11167,campus_radar:kuaishou:kuaishou-11167
+,伊利,伊利2027届校招-质量技术专训生（婴幼儿黑龙江）,校招,大庆,其他,,https://www.hotjob.cn/wt/yili/mobweb/v8/position/detail?postId=533526&recruitType=1,hotjob:wt-yili:533526
+,字节跳动,图大模型算法实习生-商业信任与安全,实习,上海,算法/AI,"Python, C++, Agent, 大模型, 机器学习, 深度学习, 强化学习, 分布式",https://jobs.bytedance.com/campus/position/7597357414090950965/detail,campus_radar:bytedance:bytedance-7597357414090950965
+,智元机器人,嵌入式软件实习生,实习,上海,硬件/嵌入式,嵌入式,https://agirobot.jobs.feishu.cn/campusrecruitment/position/7625482260637550867/detail,feishu:agirobot:7625482260637550867
+,快手,风险策略工程师,校招,北京,后端/开发,"Python, PyTorch, TensorFlow, RAG, Agent, 大模型, 机器学习, 深度学习",https://campus.kuaishou.cn/recruit/campus/e/#/campus/job-info/13098,campus_radar:kuaishou:kuaishou-13098
+,字节跳动,B端产品（平台产品）实习生-抖音生活服务,实习,北京,产品,Agent,https://jobs.bytedance.com/campus/position/7632198155431004421/detail,campus_radar:bytedance:bytedance-7632198155431004421
+,江波龙电子,2027届-海外HR专员（深圳）,校招,深圳,职能/管培,英语,https://longsys.zhiye.com/campus/detail?jobAdId=17c01884-4dae-4a21-bce7-58a1e330ab1b,beisen:longsys:17c01884-4dae-4a21-bce7-58a1e330ab1b
+,阿里巴巴,阿里国际智能技术- AI Infra -日常实习生,实习,北京,后端/开发,"Python, C++, Linux, PyTorch, TensorFlow, Agent, 大模型, 机器学习",https://campus-talent.alibaba.com/campus/position/199910360004,campus_radar:alibaba:alibaba-199910360004
+,阿里巴巴,研究型实习生-算法工程师-端侧LLM加速&语音大模型加速方向,实习,杭州,算法/AI,"Python, PyTorch, 大模型, 机器学习, 深度学习, 多模态",https://campus-talent.alibaba.com/campus/position/199903880041,campus_radar:alibaba:alibaba-199903880041
+,腾讯,元宝-大模型后训练算法研究,实习,深圳/北京/上海,算法/AI,"Python, PyTorch, Agent, 大模型, 机器学习, 深度学习, NLP",https://join.qq.com/post_detail.html?postid=1293315231581667328,campus_radar:tencent:tencent-1293315231581667328
+,新东方,27届校招-保定-初中数学托管教师,校招,保定,其他,,https://zhaopin.xdf.cn/campus/detail?jobAdId=b66afaaa-bc63-4641-b776-2daf900bce64,beisen:zhaopin.xdf.cn:b66afaaa-bc63-4641-b776-2daf900bce64
+,腾讯,混元基座模型-预训练数据效率优化研究,校招,北京,算法/AI,"大模型, 机器学习, NLP",https://join.qq.com/post_detail.html?postid=1274481034578500695,campus_radar:tencent:tencent-1274481034578500695
+,快手,大模型算法工程师-智能客服方向,校招,北京,算法/AI,"Python, C++, PyTorch, Transformer, RAG, Agent, 大模型, 机器学习",https://campus.kuaishou.cn/recruit/campus/e/#/campus/job-info/13054,campus_radar:kuaishou:kuaishou-13054
+,字节跳动,产品设计师 - 抖音生活服务,校招,北京/上海,产品,,https://jobs.bytedance.com/campus/position/7665688715490003205/detail,campus_radar:bytedance:bytedance-7665688715490003205
+,快手,游戏AI算法工程师-LLM,校招,杭州,算法/AI,"Python, C++, Linux, PyTorch, TensorFlow, RAG, Agent, 大模型",https://campus.kuaishou.cn/recruit/campus/e/#/campus/job-info/10097,campus_radar:kuaishou:kuaishou-10097
+,字节跳动,后端开发实习生（物流供应链）-TikTok Shop,实习,杭州,后端/开发,"MySQL, Redis, 高并发",https://jobs.bytedance.com/campus/position/7342431085327943974/detail,campus_radar:bytedance:bytedance-7342431085327943974
+,中国储备粮管理集团有限公司新疆分公司,党建群工岗,校招,北屯,职能/管培,,https://www.iguopin.com/job/detail?id=224862744027860565,guopin:224862744027860565
+,腾讯,微信搜索-强化学习算法研究,实习,北京,算法/AI,"Python, PyTorch, RAG, Agent, 大模型, 机器学习, 深度学习, 强化学习",https://join.qq.com/post_detail.html?postid=1231829074687944858,campus_radar:tencent:tencent-1231829074687944858
+,阿里巴巴,算法工程师-大模型Agentic Reward System,校招,北京/杭州,算法/AI,"Python, PyTorch, Agent, 大模型, 机器学习, 深度学习, 强化学习",https://campus-talent.alibaba.com/campus/position/199908340004,campus_radar:alibaba:alibaba-199908340004
+,字节跳动,后端开发实习生-番茄小说,实习,深圳,后端/开发,"Java, Python, Go, C++, PHP, 高并发, 操作系统",https://jobs.bytedance.com/campus/position/7592942879795661061/detail,campus_radar:bytedance:bytedance-7592942879795661061
+,济钢集团有限公司,财务管理,校招,济南,金融/财会,,https://www.iguopin.com/job/detail?id=225861819422475649,guopin:225861819422475649
+,新东方,无锡-高中英语一对一教师,校招,无锡,其他,英语,https://zhaopin.xdf.cn/campus/detail?jobAdId=76225375-55a6-4a30-8393-3a162fbc7f15,beisen:zhaopin.xdf.cn:76225375-55a6-4a30-8393-3a162fbc7f15
+,腾讯,微信视觉WeMM-Embedding 全模态内容理解研究,校招,北京,算法/AI,"Python, PyTorch, RAG, Agent, 大模型, 机器学习, 深度学习, 多模态",https://join.qq.com/post_detail.html?postid=1307853584876142592,campus_radar:tencent:tencent-1307853584876142592
+,联通数据智能有限公司,政务产品经理(J10875),校招,杭州,产品,,https://www.iguopin.com/job/detail?id=217165651599426524,guopin:217165651599426524
+,百度,大模型算法实习生,实习,北京,算法/AI,"Python, PyTorch, TensorFlow, RAG, Agent, 大模型, 机器学习, 深度学习",https://talent.baidu.com/jobs/detail/INTERN/292032a7-1ddf-4bcb-b658-f2b475308c67,campus_radar:baidu:baidu-292032a7-1ddf-4bcb-b658-f2b475308c67
+,快手,【留用实习】平台产品经理-AI平台,实习,北京,产品,数据分析,https://campus.kuaishou.cn/recruit/campus/e/#/campus/job-info/11453,campus_radar:kuaishou:kuaishou-11453
+,科大讯飞,学科教研员-语文/数学/英语/物理/化学/历史/地理方向（大量HC）,校招,合肥/北京,其他,"大模型, 英语",https://iflytek.zhiye.com/campus/detail?jobAdId=b509e1dc-dea7-4b41-bd6c-ed7f3d84f806,beisen:iflytek:b509e1dc-dea7-4b41-bd6c-ed7f3d84f806
+,赛维时代,AI算法工程师（2027届）,校招,深圳,算法/AI,,https://wecruit.hotjob.cn/SU60a36363bef57c11896121b2/pb/posDetail.html?postId=6aa2973438cb5261fe5dd52a&postType=campus,hotjob:SU60a36363bef57c11896121b2:6aa2973438cb5261fe5dd52a
+,阿里巴巴,MaaS Agentic视觉生成算法研究-阿里星/A Star,校招,北京/杭州,算法/AI,"Python, PyTorch, Agent, 大模型, 机器学习, 深度学习, 多模态",https://campus-talent.alibaba.com/campus/position/199907640111,campus_radar:alibaba:alibaba-199907640111
+,卓越商企服务,法务管培生(004286),校招,北京/成都/东莞/广州,职能/管培,,https://wecruit.hotjob.cn/SU687d8ff5e57172288b64ef2d/pb/posDetail.html?postId=6a97e02e5e09b14b2751ba3b&postType=campus,hotjob:SU687d8ff5e57172288b64ef2d:6a97e02e5e09b14b2751ba3b
+,智元机器人,测试工艺工程师-灵犀业务部,校招,深圳,测试,"Python, Java, C++, 多模态, 数据分析, Excel, 统计学, 机器人",https://agirobot.jobs.feishu.cn/campusrecruitment/position/7662296143946795274/detail,feishu:agirobot:7662296143946795274
+,阿里巴巴,AI评测工程师,实习,杭州,后端/开发,"Python, PyTorch, TensorFlow, RAG, Agent, 大模型, 机器学习, 多模态",https://campus-talent.alibaba.com/campus/position/199904240007,campus_radar:alibaba:alibaba-199904240007
+,蔚来,校招-Agent应用开发工程师（资源服务）,校招,合肥/武汉/上海/北京,算法/AI,"Java, Python, Go, JavaScript, TypeScript, Spring, MySQL, Redis",https://nio.jobs.feishu.cn/campus/position/7673028746206972179/detail,campus_radar:nio:nio-7673028746206972179
+,纵横股份,强度工程师（纵横云龙2027届校招）,校招,成都,后端/开发,,https://jouav.zhiye.com/campus/detail?jobAdId=fd2d5b12-f0aa-4b33-bd0d-fd7fa36b2273,beisen:jouav:fd2d5b12-f0aa-4b33-bd0d-fd7fa36b2273
+,百度,大模型算法工程师,校招,深圳,算法/AI,"Python, PyTorch, Transformer, RAG, 大模型, 机器学习, 深度学习, 强化学习",https://talent.baidu.com/jobs/detail/GRADUATE/fd615cd0-aebd-47c3-bb3d-6e4335e6be90,campus_radar:baidu:baidu-fd615cd0-aebd-47c3-bb3d-6e4335e6be90
+,国投证券,财富顾问岗（浙江）,校招,杭州,其他,,https://essence.hotjob.cn/SU625d4a0b2f9d24287db127c8/pb/posDetail.html?postId=6aa753df5e0f494d82ad7f15&postType=campus,hotjob:SU625d4a0b2f9d24287db127c8:6aa753df5e0f494d82ad7f15
+,蔚来,Super Sparks-校招-企业智能算法研究员,校招,上海,算法/AI,"Python, PyTorch, RAG, Agent, 大模型, 机器学习, 深度学习, 强化学习",https://nio.jobs.feishu.cn/campus/position/7665996429010569515/detail,campus_radar:nio:nio-7665996429010569515
+,百度,秒哒大模型算法实习生,实习,北京/上海,算法/AI,"Python, PyTorch, TensorFlow, RAG, Agent, 大模型, 机器学习, 深度学习",https://talent.baidu.com/jobs/detail/INTERN/320200cd-893d-4076-b39d-1f77f7a79948,campus_radar:baidu:baidu-320200cd-893d-4076-b39d-1f77f7a79948
+,阿里巴巴,数据科学家,校招,北京/广州/杭州/上海,数据,"Java, Python, SQL, RAG, 大模型, 机器学习, 深度学习, 数据挖掘",https://campus-talent.alibaba.com/campus/position/199907800043,campus_radar:alibaba:alibaba-199907800043

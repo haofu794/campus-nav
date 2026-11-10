@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>校招导航</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <h1>校招导航</h1>
+      <span id="meta" class="muted">加载中…</span>
+    </div>
+    <nav id="tabs">
+      <button data-tab="校招" class="active">校招</button>
+      <button data-tab="实习">实习</button>
+      <button data-tab="mine">我的投递 <span id="mine-count"></span></button>
+      <button data-tab="companies">公司目录 <span id="company-count"></span></button>
+    </nav>
+  </header>
+
+  <section id="filters">
+    <input id="q" type="search" placeholder="搜索公司 / 岗位 / 技能 / 投递说明">
+    <select id="direction" class="jobs-only"><option value="">全部方向</option></select>
+    <select id="city" class="jobs-only"><option value="">全部城市</option></select>
+    <select id="cat" class="companies-only"><option value="">全部行业</option></select>
+    <select id="cstatus" class="companies-only">
+      <option value="">全部覆盖情况</option>
+      <option value="scraped">已抓取岗位</option>
+      <option value="link">只有入口链接</option>
+      <option value="note">只有投递说明</option>
+    </select>
+    <select id="cmark-filter" class="companies-only">
+      <option value="">全部标记</option>
+      <option value="__none">未标记</option>
+    </select>
+    <div id="ent" class="chips"></div>
+    <label class="check jobs-only"><input id="only-new" type="checkbox"> 只看 7 天内新增</label>
+    <label class="check jobs-only"><input id="hide-applied" type="checkbox"> 隐藏已处理</label>
+    <select id="sort" class="jobs-only">
+      <option value="rec">推荐（多样化）</option>
+      <option value="match">匹配分</option>
+      <option value="new">最新发现</option>
+    </select>
+    <select id="csort" class="companies-only">
+      <option value="opened">按开启时间</option>
+      <option value="jobs">按岗位数</option>
+      <option value="name">按公司名</option>
+    </select>
+  </section>
+
+  <details id="resume" class="jobs-only">
+    <summary>简历匹配：<span id="resume-state">加载中…</span></summary>
+    <div class="resume-body">
+      <p class="muted">简历只在这个浏览器里解析，不会上传到任何地方。扫描版 PDF 读不出文字的话，直接把简历内容粘贴到下面的框里。</p>
+      <div class="resume-row">
+        <label class="file-btn">选择 PDF 简历<input id="resume-file" type="file" accept="application/pdf"></label>
+        <span id="resume-file-name" class="muted"></span>
+      </div>
+      <textarea id="resume-text" rows="5" placeholder="或者在这里粘贴简历文字，然后点「从简历识别技能」"></textarea>
+      <label class="muted" for="resume-skills">识别出的技能（可以手动增删，用逗号分隔）</label>
+      <input id="resume-skills" type="text">
+      <div class="resume-row">
+        <button id="resume-extract">从简历识别技能</button>
+        <button id="resume-apply" class="primary">按这些技能重新打分</button>
+        <button id="resume-clear">恢复默认</button>
+      </div>
+    </div>
+  </details>
+
+  <section id="status-bar" class="muted"></section>
+  <main id="list"></main>
+  <div id="more-wrap"><button id="more">加载更多</button></div>
+
+  <footer class="muted">
+    <span>投递进度只存在这个浏览器（localStorage）。</span>
+    <button id="export">导出进度</button>
+    <label class="file-btn">导入进度<input id="import" type="file" accept="application/json"></label>
+    <span>部分数据来自 <a href="https://github.com/Ajax-1/campus-radar" target="_blank" rel="noopener">campus-radar</a>（MIT）。</span>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

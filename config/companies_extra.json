@@ -1,0 +1,9 @@
+[
+  {"company": "北京银行", "ent": "银行", "portal": "https://bankofbeijing.zhiye.com"},
+  {"company": "上海银行", "ent": "银行", "portal": "https://bosc.zhiye.com"},
+  {"company": "成都银行", "ent": "银行", "portal": "https://bocd.zhiye.com"},
+  {"company": "中原银行", "ent": "银行", "portal": "https://zybank.zhiye.com"},
+  {"company": "东莞银行", "ent": "银行", "portal": "https://dongguanbank.zhiye.com"},
+  {"company": "河北银行", "ent": "银行", "portal": "https://hebbank.zhiye.com"},
+  {"company": "去哪儿旅行", "ent": "民企", "portal": "https://hf7l9aiqzx.jobs.feishu.cn/704852"}
+]

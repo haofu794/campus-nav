@@ -1,0 +1,13 @@
+# resume stays on my machine
+resume/
+# big intermediate files, regenerated every run
+data/raw/
+data/rank_debug.json
+data/registry_cache.json
+data/emb_cache.npz
+data/model_cache/
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+.env

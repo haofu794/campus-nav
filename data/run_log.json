@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-10",
+  "total": 31822,
+  "failed_sources": [],
+  "kept_stale": 0,
+  "new_today": 31822,
+  "by_platform": {
+    "campus_radar": 13210,
+    "feishu": 1294,
+    "beisen": 11438,
+    "guopin": 1934,
+    "pingan": 1169,
+    "hotjob": 2777
+  },
+  "coverage": {
+    "已抓取": 306,
+    "仅入口（自建网站）": 413,
+    "仅入口（网站暂时连不上）": 136,
+    "仅入口（Moka 加密）": 86,
+    "仅投递说明（公众号/邮箱）": 81
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "blacklist": ["华为", "比亚迪"],
+  "stale_days": 3,
+  "workers": 6
+}

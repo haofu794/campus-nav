@@ -1,0 +1,51 @@
+name: daily-update
+
+on:
+  schedule:
+    - cron: "0 23 * * *"   # 23:00 UTC = 07:00 Beijing time
+  workflow_dispatch:         # "Run workflow" button for manual testing
+
+permissions:
+  contents: write            # needed to commit data.json back
+
+concurrency:
+  group: daily-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150   # ~300 career sites + Guopin; the weekly re-probe adds a few minutes
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      # Keep the embedding model (~90 MB) and yesterday's job vectors between
+      # runs, so each day only downloads nothing and embeds only new jobs.
+      - uses: actions/cache@v4
+        with:
+          path: |
+            data/model_cache
+            data/emb_cache.npz
+          key: emb-${{ github.run_id }}
+          restore-keys: emb-
+
+      - name: Scrape, clean, rank
+        run: python run.py
+
+      - name: Commit new data
+        run: |
+          git config user.name "daily-bot"
+          git config user.email "daily-bot@users.noreply.github.com"
+          # platform_cache.json = which recruiting system each career site uses;
+          # committing it means the ~800 sites are only re-probed once a week.
+          git add web/data.json data/history.json data/run_log.json data/platform_cache.json
+          git diff --cached --quiet && echo "no changes" && exit 0
+          git commit -m "data: $(date -u +%F)"
+          git push
