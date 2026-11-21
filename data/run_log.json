@@ -1,17 +1,17 @@
 {
-  "date": "2026-11-20",
-  "total": 53820,
+  "date": "2026-11-21",
+  "total": 53762,
   "sources": 297,
   "failed_sources": [],
-  "kept_stale": 811,
-  "new_today": 332,
+  "kept_stale": 710,
+  "new_today": 236,
   "by_platform": {
-    "campus_radar": 13058,
-    "beisen": 19437,
-    "feishu": 1388,
+    "campus_radar": 13012,
+    "beisen": 19392,
+    "feishu": 1384,
     "guopin": 15697,
-    "pingan": 1189,
-    "hotjob": 3051
+    "pingan": 1191,
+    "hotjob": 3086
   },
   "coverage": {
     "已抓取": 314,
