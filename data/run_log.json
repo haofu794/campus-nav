@@ -1,23 +1,25 @@
 {
-  "date": "2026-11-23",
-  "total": 53377,
+  "date": "2026-11-24",
+  "total": 53510,
   "sources": 297,
-  "failed_sources": [],
-  "kept_stale": 718,
-  "new_today": 198,
+  "failed_sources": [
+    "hotjob:wt-TCL"
+  ],
+  "kept_stale": 989,
+  "new_today": 278,
   "by_platform": {
-    "campus_radar": 12833,
-    "beisen": 19289,
-    "feishu": 1380,
-    "guopin": 15587,
-    "pingan": 1187,
-    "hotjob": 3101
+    "campus_radar": 12759,
+    "beisen": 19347,
+    "feishu": 1391,
+    "guopin": 15693,
+    "pingan": 1193,
+    "hotjob": 3127
   },
   "coverage": {
-    "已抓取": 314,
+    "已抓取": 313,
     "仅入口（自建网站）": 479,
-    "仅入口（Moka 加密）": 100,
-    "仅投递说明（公众号/邮箱）": 81,
-    "仅入口（网站暂时连不上）": 48
+    "仅入口（网站暂时连不上）": 48,
+    "仅入口（Moka 加密）": 101,
+    "仅投递说明（公众号/邮箱）": 81
   }
 }
