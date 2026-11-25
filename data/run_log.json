@@ -1,19 +1,19 @@
 {
-  "date": "2026-11-24",
-  "total": 53510,
+  "date": "2026-11-25",
+  "total": 53597,
   "sources": 297,
   "failed_sources": [
     "hotjob:wt-TCL"
   ],
-  "kept_stale": 989,
-  "new_today": 278,
+  "kept_stale": 1207,
+  "new_today": 385,
   "by_platform": {
-    "campus_radar": 12759,
-    "beisen": 19347,
+    "campus_radar": 12844,
+    "beisen": 19335,
     "feishu": 1391,
-    "guopin": 15693,
-    "pingan": 1193,
-    "hotjob": 3127
+    "guopin": 15720,
+    "pingan": 1195,
+    "hotjob": 3112
   },
   "coverage": {
     "已抓取": 313,
